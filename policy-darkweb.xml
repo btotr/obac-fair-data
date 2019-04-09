@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Policy xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	PolicyId="urn:oasis:names:tc:xacml:2.0:conformance-test:SAREF:policy"
+	RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:deny-unless-permit"
+	Version="1.0">
+	<Description>
+		Policy for DARKWEB ontology
+	</Description>
+	<Target />
+	<Rule Effect="Permit"
+		RuleId="urn:oasis:names:tc:xacml:2.0:conformance-test:SAREF:rule1">
+		<Description>
+			Owner has read access to DARKWEB marketplace.
+		</Description>
+		<Target>
+			<AnyOf>
+				<AllOf>
+					<Match
+						MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+						<AttributeValue
+							DataType="http://www.w3.org/2001/XMLSchema#string">owner</AttributeValue>
+						<AttributeDesignator
+							AttributeId="urn:oasis:names:tc:xacml:1.0:subject:subject-id"
+							Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
+							DataType="http://www.w3.org/2001/XMLSchema#string"
+							MustBePresent="false" />
+					</Match>
+				</AllOf>
+			</AnyOf>
+			<AnyOf>
+				<AllOf>
+					<Match
+						MatchId="urn:nl:tno:ict:ds:cb:obac:graph-pattern-value-match">
+						<AttributeValue
+							DataType="urn:nl:tno:ict:ds:cb:obac:graph-pattern-value"><![CDATA[
+							
+							?item ?predicate ?object .
+							?item <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://www.tno.nl/security/ontology/darkweb/Item> .
+							?item <https://www.tno.nl/security/ontology/darkweb/hasDestination> <https://www.tno.nl/security/data/darkweb/USA> .
+							?item <https://www.tno.nl/security/ontology/darkweb/hasOrigin> <https://www.tno.nl/security/data/darkweb/USA> .
+							?item <https://www.tno.nl/security/ontology/darkweb/hasTopic> ?topic .
+							?topic <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?topicType .
+							?topicType <http://www.w3.org/2000/01/rdf-schema#subClassOf>+ <https://www.tno.nl/security/ontology/darkweb/Drugs> .
+							
+							]]></AttributeValue>
+						<AttributeDesignator
+							AttributeId="urn:oasis:names:tc:xacml:1.0:resource:resource-id"
+							Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource"
+							DataType="urn:nl:tno:ict:ds:cb:obac:graph-pattern-value"
+							MustBePresent="false" />
+					</Match>
+				</AllOf>
+			</AnyOf>
+			<AnyOf>
+				<AllOf>
+					<Match
+						MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+						<AttributeValue
+							DataType="http://www.w3.org/2001/XMLSchema#string">read</AttributeValue>
+						<AttributeDesignator
+							AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id"
+							Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action"
+							DataType="http://www.w3.org/2001/XMLSchema#string"
+							MustBePresent="false" />
+					</Match>
+				</AllOf>
+			</AnyOf>
+		</Target>
+	</Rule>
+	<Rule Effect="Permit"
+		RuleId="urn:oasis:names:tc:xacml:2.0:conformance-test:SCSN:rule3">
+		<Description>
+			Admin has access to everything.
+		</Description>
+		<Target>
+			<AnyOf>
+				<AllOf>
+					<Match
+						MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+						<AttributeValue
+							DataType="http://www.w3.org/2001/XMLSchema#string">admin</AttributeValue>
+						<AttributeDesignator
+							AttributeId="urn:oasis:names:tc:xacml:1.0:subject:subject-id"
+							Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject"
+							DataType="http://www.w3.org/2001/XMLSchema#string"
+							MustBePresent="false" />
+					</Match>
+				</AllOf>
+			</AnyOf>
+		</Target>
+	</Rule>
+</Policy>

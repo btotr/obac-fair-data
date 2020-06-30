@@ -12,10 +12,6 @@
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<file:///P:/git/obac-fair-data/agora_dataset.ttl>
-  a owl:Ontology ;
-  owl:imports <https://www.tno.nl/security/ontology/darkweb> ;
-.
 <file:/P:/git/obac-fair-data/agora_dataset.ttl>
   a owl:Ontology ;
   owl:imports <https://www.tno.nl/security/ontology/darkweb> ;

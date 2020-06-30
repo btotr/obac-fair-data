@@ -1,11 +1,13 @@
 # baseURI: https://www.tno.nl/security/ontology/darkweb
 # imports: http://spinrdf.org/spin
+# imports: http://www.w3.org/ns/shacl#
 # prefix: ontotita
 
 @prefix ontotita: <https://www.tno.nl/security/ontology/darkweb#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix sp: <http://spinrdf.org/sp#> .
 @prefix spin: <http://spinrdf.org/spin#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -17,7 +19,7 @@ owl:Thing
       sp:templates (
           [
             sp:object [
-                sp:varName "c" ;
+                sp:varName "ec" ;
               ] ;
             sp:predicate rdf:type ;
             sp:subject [
@@ -37,7 +39,7 @@ owl:Thing
           ]
           [
             sp:object [
-                sp:varName "ec" ;
+                sp:varName "c" ;
               ] ;
             sp:predicate rdf:type ;
             sp:subject [
@@ -50,6 +52,8 @@ owl:Thing
 <https://www.tno.nl/security/ontology/darkweb>
   a owl:Ontology ;
   owl:imports <http://spinrdf.org/spin> ;
+  owl:imports sh: ;
+  sh:entailment sh:Rules ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Chemicals>
   a owl:Class ;
@@ -480,6 +484,7 @@ owl:Thing
 .
 <https://www.tno.nl/security/ontology/darkweb/Item>
   a owl:Class ;
+  a sh:NodeShape ;
   spin:rule [
       a sp:Construct ;
       sp:templates (
@@ -543,6 +548,14 @@ owl:Thing
       owl:someValuesFrom <https://www.tno.nl/security/ontology/darkweb/Vendor> ;
     ] ;
   owl:equivalentClass <http://autorisatiemodel.politie.nl/#Gegeven> ;
+  sh:property [
+      a sh:PropertyShape ;
+      sh:path rdfs:label ;
+      rdfs:label "item label" ;
+      sh:values [
+          sh:path <https://www.tno.nl/security/ontology/darkweb/hasTitle> ;
+        ] ;
+    ] ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Jewelry>
   a owl:Class ;

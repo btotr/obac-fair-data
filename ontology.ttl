@@ -1,739 +1,627 @@
-@prefix : <https://www.tno.nl/security/ontology/darkweb#> .
+# baseURI: https://www.tno.nl/security/ontology/darkweb
+# imports: http://spinrdf.org/spin
+# prefix: ontotita
+
+@prefix ontotita: <https://www.tno.nl/security/ontology/darkweb#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spin: <http://spinrdf.org/spin#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <https://www.tno.nl/security/ontology/darkweb> .
 
-<https://www.tno.nl/security/ontology/darkweb> rdf:type owl:Ontology .
-
-#################################################################
-#    Object Properties
-#################################################################
-
-###  https://www.tno.nl/security/ontology/darkweb/hasDestination
-<https://www.tno.nl/security/ontology/darkweb/hasDestination> rdf:type owl:ObjectProperty ;
-                                                              rdfs:subPropertyOf owl:topObjectProperty ;
-                                                              rdfs:domain <https://www.tno.nl/security/ontology/darkweb/Item> ;
-                                                              rdfs:range <https://www.tno.nl/security/ontology/darkweb/Country> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/hasOrigin
-<https://www.tno.nl/security/ontology/darkweb/hasOrigin> rdf:type owl:ObjectProperty ;
-                                                         rdfs:domain <https://www.tno.nl/security/ontology/darkweb/Item> ;
-                                                         rdfs:range <https://www.tno.nl/security/ontology/darkweb/Country> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/hasTopic
-<https://www.tno.nl/security/ontology/darkweb/hasTopic> rdf:type owl:ObjectProperty ;
-                                                        rdfs:domain <https://www.tno.nl/security/ontology/darkweb/Item> ;
-                                                        rdfs:range <https://www.tno.nl/security/ontology/darkweb/Topic> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/hasVendor
-<https://www.tno.nl/security/ontology/darkweb/hasVendor> rdf:type owl:ObjectProperty ;
-                                                         rdfs:domain <https://www.tno.nl/security/ontology/darkweb/Item> ;
-                                                         rdfs:range <https://www.tno.nl/security/ontology/darkweb/Vendor> .
-
-
-#################################################################
-#    Data properties
-#################################################################
-
-###  https://www.tno.nl/security/ontology/darkweb/hasDescription
-<https://www.tno.nl/security/ontology/darkweb/hasDescription> rdf:type owl:DatatypeProperty ;
-                                                              rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/hasPrice
-<https://www.tno.nl/security/ontology/darkweb/hasPrice> rdf:type owl:DatatypeProperty .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/hasRating
-<https://www.tno.nl/security/ontology/darkweb/hasRating> rdf:type owl:DatatypeProperty ;
-                                                         rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/hasRemark
-<https://www.tno.nl/security/ontology/darkweb/hasRemark> rdf:type owl:DatatypeProperty ;
-                                                         rdfs:subPropertyOf owl:topDataProperty .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/hasTitle
-<https://www.tno.nl/security/ontology/darkweb/hasTitle> rdf:type owl:DatatypeProperty .
-
-
-#################################################################
-#    Classes
-#################################################################
-
-###  https://www.tno.nl/security/ontology/darkweb/Chemicals
-<https://www.tno.nl/security/ontology/darkweb/Chemicals> rdf:type owl:Class ;
-                                                         rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Counterfeits
-<https://www.tno.nl/security/ontology/darkweb/Counterfeits> rdf:type owl:Class ;
-                                                            rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Country
-<https://www.tno.nl/security/ontology/darkweb/Country> rdf:type owl:Class .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Data
-<https://www.tno.nl/security/ontology/darkweb/Data> rdf:type owl:Class ;
-                                                    rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia
-<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> rdf:type owl:Class ;
-                                                                  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs
-<https://www.tno.nl/security/ontology/darkweb/Drugs> rdf:type owl:Class ;
-                                                     rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Forgeries
-<https://www.tno.nl/security/ontology/darkweb/Forgeries> rdf:type owl:Class ;
-                                                         rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info
-<https://www.tno.nl/security/ontology/darkweb/Info> rdf:type owl:Class ;
-                                                    rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Information
-<https://www.tno.nl/security/ontology/darkweb/Information> rdf:type owl:Class ;
-                                                           rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Item
-<https://www.tno.nl/security/ontology/darkweb/Item> rdf:type owl:Class ;
-                                                    rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasDestination> ;
-                                                                      owl:someValuesFrom <https://www.tno.nl/security/ontology/darkweb/Country>
-                                                                    ] ,
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasOrigin> ;
-                                                                      owl:someValuesFrom <https://www.tno.nl/security/ontology/darkweb/Country>
-                                                                    ] ,
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasTopic> ;
-                                                                      owl:someValuesFrom <https://www.tno.nl/security/ontology/darkweb/Topic>
-                                                                    ] ,
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasVendor> ;
-                                                                      owl:someValuesFrom <https://www.tno.nl/security/ontology/darkweb/Vendor>
-                                                                    ] ,
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasDescription> ;
-                                                                      owl:someValuesFrom xsd:string
-                                                                    ] ,
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasPrice> ;
-                                                                      owl:someValuesFrom xsd:string
-                                                                    ] ,
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasRating> ;
-                                                                      owl:someValuesFrom xsd:string
-                                                                    ] ,
-                                                                    [ rdf:type owl:Restriction ;
-                                                                      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasTitle> ;
-                                                                      owl:someValuesFrom xsd:string
-                                                                    ] .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Jewelry
-<https://www.tno.nl/security/ontology/darkweb/Jewelry> rdf:type owl:Class ;
-                                                       rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Other
-<https://www.tno.nl/security/ontology/darkweb/Other> rdf:type owl:Class ;
-                                                     rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Services
-<https://www.tno.nl/security/ontology/darkweb/Services> rdf:type owl:Class ;
-                                                        rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Tobacco
-<https://www.tno.nl/security/ontology/darkweb/Tobacco> rdf:type owl:Class ;
-                                                       rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Topic
-<https://www.tno.nl/security/ontology/darkweb/Topic> rdf:type owl:Class .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Vendor
-<https://www.tno.nl/security/ontology/darkweb/Vendor> rdf:type owl:Class .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Weapons
-<https://www.tno.nl/security/ontology/darkweb/Weapons> rdf:type owl:Class ;
-                                                       rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/trim
-<https://www.tno.nl/security/ontology/darkweb/trim> rdf:type owl:Class ;
-                                                    rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Shake> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Counterfeits/Accessories
-<https://www.tno.nl/security/ontology/darkweb/Counterfeits/Accessories> rdf:type owl:Class ;
-                                                                        rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Counterfeits> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Counterfeits/Clothing
-<https://www.tno.nl/security/ontology/darkweb/Counterfeits/Clothing> rdf:type owl:Class ;
-                                                                     rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Counterfeits> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Counterfeits/Counterfeits_Electronics
-<https://www.tno.nl/security/ontology/darkweb/Counterfeits/Counterfeits_Electronics> rdf:type owl:Class ;
-                                                                                     rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Counterfeits> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Counterfeits/Money
-<https://www.tno.nl/security/ontology/darkweb/Counterfeits/Money> rdf:type owl:Class ;
-                                                                  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Counterfeits> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Counterfeits/Watches
-<https://www.tno.nl/security/ontology/darkweb/Counterfeits/Watches> rdf:type owl:Class ;
-                                                                    rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Counterfeits> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Data/Accounts
-<https://www.tno.nl/security/ontology/darkweb/Data/Accounts> rdf:type owl:Class ;
-                                                             rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Data> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Data/Pirated
-<https://www.tno.nl/security/ontology/darkweb/Data/Pirated> rdf:type owl:Class ;
-                                                            rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Data> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Data/Software
-<https://www.tno.nl/security/ontology/darkweb/Data/Software> rdf:type owl:Class ;
-                                                             rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Data> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Containers
-<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Containers> rdf:type owl:Class ;
-                                                                             rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Grinders
-<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Grinders> rdf:type owl:Class ;
-                                                                           rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment
-<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment> rdf:type owl:Class ;
-                                                                                      rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Paper
-<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Paper> rdf:type owl:Class ;
-                                                                        rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Pipes
-<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Pipes> rdf:type owl:Class ;
-                                                                        rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Scales
-<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Scales> rdf:type owl:Class ;
-                                                                         rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Stashes
-<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Stashes> rdf:type owl:Class ;
-                                                                          rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment/Filters
-<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment/Filters> rdf:type owl:Class ;
-                                                                                              rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment/Needles
-<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment/Needles> rdf:type owl:Class ;
-                                                                                              rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment/Other
-<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment/Other> rdf:type owl:Class ;
-                                                                                            rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment/Syringes
-<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment/Syringes> rdf:type owl:Class ;
-                                                                                               rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Barbiturates
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Barbiturates> rdf:type owl:Class ;
-                                                                  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Benzos
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Benzos> rdf:type owl:Class ;
-                                                            rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis> rdf:type owl:Class ;
-                                                              rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives> rdf:type owl:Class ;
-                                                                   rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy> rdf:type owl:Class ;
-                                                             rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Electronics
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Electronics> rdf:type owl:Class ;
-                                                                 rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> rdf:type owl:Class ;
-                                                             rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Other
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Other> rdf:type owl:Class ;
-                                                           rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Prescription
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Prescription> rdf:type owl:Class ;
-                                                                  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> rdf:type owl:Class ;
-                                                                  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/RCs
-<https://www.tno.nl/security/ontology/darkweb/Drugs/RCs> rdf:type owl:Class ;
-                                                         rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Steroids
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Steroids> rdf:type owl:Class ;
-                                                              rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants> rdf:type owl:Class ;
-                                                                rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Concentrates
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Concentrates> rdf:type owl:Class ;
-                                                                           rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Edibles
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Edibles> rdf:type owl:Class ;
-                                                                      rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Hash
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Hash> rdf:type owl:Class ;
-                                                                   rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Seeds
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Seeds> rdf:type owl:Class ;
-                                                                    rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Shake
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Shake> rdf:type owl:Class ;
-                                                                    rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Synthetics
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Synthetics> rdf:type owl:Class ;
-                                                                         rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Weed
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Weed> rdf:type owl:Class ;
-                                                                   rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/GBL
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/GBL> rdf:type owl:Class ;
-                                                                       rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/GHB
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/GHB> rdf:type owl:Class ;
-                                                                       rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/Ketamine
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/Ketamine> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/MXE
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/MXE> rdf:type owl:Class ;
-                                                                       rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/Other
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/Other> rdf:type owl:Class ;
-                                                                         rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/PCP
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/PCP> rdf:type owl:Class ;
-                                                                       rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy/MDA
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy/MDA> rdf:type owl:Class ;
-                                                                 rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy/MDMA
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy/MDMA> rdf:type owl:Class ;
-                                                                  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy/Other
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy/Other> rdf:type owl:Class ;
-                                                                   rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy/Pills
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy/Pills> rdf:type owl:Class ;
-                                                                   rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Buprenorphine
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Buprenorphine> rdf:type owl:Class ;
-                                                                           rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Codeine
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Codeine> rdf:type owl:Class ;
-                                                                     rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Dihydrocodeine
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Dihydrocodeine> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Fentanyl
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Fentanyl> rdf:type owl:Class ;
-                                                                      rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Heroin
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Heroin> rdf:type owl:Class ;
-                                                                    rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Hydrocodone
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Hydrocodone> rdf:type owl:Class ;
-                                                                         rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Morphine
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Morphine> rdf:type owl:Class ;
-                                                                      rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Opium
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Opium> rdf:type owl:Class ;
-                                                                   rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Other
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Other> rdf:type owl:Class ;
-                                                                   rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Oxycodone
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Oxycodone> rdf:type owl:Class ;
-                                                                       rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/DMT
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/DMT> rdf:type owl:Class ;
-                                                                      rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/LSD
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/LSD> rdf:type owl:Class ;
-                                                                      rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Mescaline
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Mescaline> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Mushrooms
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Mushrooms> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/NB
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/NB> rdf:type owl:Class ;
-                                                                     rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Other
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Other> rdf:type owl:Class ;
-                                                                        rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Others
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Others> rdf:type owl:Class ;
-                                                                         rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Salvia
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Salvia> rdf:type owl:Class ;
-                                                                         rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Spores
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Spores> rdf:type owl:Class ;
-                                                                         rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/2C
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/2C> rdf:type owl:Class ;
-                                                                     rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/5-MeO
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/5-MeO> rdf:type owl:Class ;
-                                                                        rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Cocaine
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Cocaine> rdf:type owl:Class ;
-                                                                        rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Mephedrone
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Mephedrone> rdf:type owl:Class ;
-                                                                           rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Meth
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Meth> rdf:type owl:Class ;
-                                                                     rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Prescription
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Prescription> rdf:type owl:Class ;
-                                                                             rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Speed
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Speed> rdf:type owl:Class ;
-                                                                      rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Weight_loss
-<https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Weight_loss> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Forgeries/Other
-<https://www.tno.nl/security/ontology/darkweb/Forgeries/Other> rdf:type owl:Class ;
-                                                               rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Forgeries> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Forgeries/Physical_documents
-<https://www.tno.nl/security/ontology/darkweb/Forgeries/Physical_documents> rdf:type owl:Class ;
-                                                                            rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Forgeries> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Forgeries/Scans
-<https://www.tno.nl/security/ontology/darkweb/Forgeries/Scans> rdf:type owl:Class ;
-                                                               rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Forgeries> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Forgeries/Scans/Photos
-<https://www.tno.nl/security/ontology/darkweb/Forgeries/Scans/Photos> rdf:type owl:Class ;
-                                                                      rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Forgeries/Scans> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info/eBooks
-<https://www.tno.nl/security/ontology/darkweb/Info/eBooks> rdf:type owl:Class ;
-                                                           rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Aliens
-<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Aliens> rdf:type owl:Class ;
-                                                                  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Anonymity
-<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Anonymity> rdf:type owl:Class ;
-                                                                     rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Doomsday
-<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Doomsday> rdf:type owl:Class ;
-                                                                    rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Drugs
-<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Drugs> rdf:type owl:Class ;
-                                                                 rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Economy
-<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Economy> rdf:type owl:Class ;
-                                                                   rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info/eBooks/IT
-<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/IT> rdf:type owl:Class ;
-                                                              rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Making_money
-<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Making_money> rdf:type owl:Class ;
-                                                                        rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Other
-<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Other> rdf:type owl:Class ;
-                                                                 rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Philosophy
-<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Philosophy> rdf:type owl:Class ;
-                                                                      rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Politics
-<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Politics> rdf:type owl:Class ;
-                                                                    rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Psychology
-<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Psychology> rdf:type owl:Class ;
-                                                                      rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Relationships
-<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Relationships> rdf:type owl:Class ;
-                                                                         rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Science
-<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Science> rdf:type owl:Class ;
-                                                                   rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Aliens/UFOs
-<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Aliens/UFOs> rdf:type owl:Class ;
-                                                                       rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Aliens> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Relationships/Sex
-<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Relationships/Sex> rdf:type owl:Class ;
-                                                                             rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Relationships> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Information/Guides
-<https://www.tno.nl/security/ontology/darkweb/Information/Guides> rdf:type owl:Class ;
-                                                                  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Information> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Information/eBooks
-<https://www.tno.nl/security/ontology/darkweb/Information/eBooks> rdf:type owl:Class ;
-                                                                  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Information> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Services/Advertising
-<https://www.tno.nl/security/ontology/darkweb/Services/Advertising> rdf:type owl:Class ;
-                                                                    rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Services> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Services/Hacking
-<https://www.tno.nl/security/ontology/darkweb/Services/Hacking> rdf:type owl:Class ;
-                                                                rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Services> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Services/Money
-<https://www.tno.nl/security/ontology/darkweb/Services/Money> rdf:type owl:Class ;
-                                                              rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Services> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Services/Other
-<https://www.tno.nl/security/ontology/darkweb/Services/Other> rdf:type owl:Class ;
-                                                              rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Services> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Services/Travel
-<https://www.tno.nl/security/ontology/darkweb/Services/Travel> rdf:type owl:Class ;
-                                                               rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Services> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Tobacco/Paraphernalia
-<https://www.tno.nl/security/ontology/darkweb/Tobacco/Paraphernalia> rdf:type owl:Class ;
-                                                                     rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Tobacco> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Tobacco/Smoked
-<https://www.tno.nl/security/ontology/darkweb/Tobacco/Smoked> rdf:type owl:Class ;
-                                                              rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Tobacco> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Weapons/Ammunition
-<https://www.tno.nl/security/ontology/darkweb/Weapons/Ammunition> rdf:type owl:Class ;
-                                                                  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Weapons> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Weapons/Fireworks
-<https://www.tno.nl/security/ontology/darkweb/Weapons/Fireworks> rdf:type owl:Class ;
-                                                                 rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Weapons> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Weapons/Lethal_firearms
-<https://www.tno.nl/security/ontology/darkweb/Weapons/Lethal_firearms> rdf:type owl:Class ;
-                                                                       rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Weapons> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Weapons/Melee
-<https://www.tno.nl/security/ontology/darkweb/Weapons/Melee> rdf:type owl:Class ;
-                                                             rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Weapons> .
-
-
-###  https://www.tno.nl/security/ontology/darkweb/Weapons/Non-lethal_firearms
-<https://www.tno.nl/security/ontology/darkweb/Weapons/Non-lethal_firearms> rdf:type owl:Class ;
-                                                                           rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Weapons> .
-
-
-###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
+<https://www.tno.nl/security/ontology/darkweb>
+  a owl:Ontology ;
+  owl:imports <http://spinrdf.org/spin> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Chemicals>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Counterfeits>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Counterfeits/Accessories>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Counterfeits> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Counterfeits/Clothing>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Counterfeits> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Counterfeits/Counterfeits_Electronics>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Counterfeits> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Counterfeits/Money>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Counterfeits> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Counterfeits/Watches>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Counterfeits> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Country>
+  a owl:Class ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Data>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Data/Accounts>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Data> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Data/Pirated>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Data> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Data/Software>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Data> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Containers>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Grinders>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment/Filters>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment/Needles>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment/Other>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment/Syringes>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Paper>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Pipes>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Scales>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Stashes>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Barbiturates>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Benzos>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Concentrates>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Edibles>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Hash>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Seeds>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Shake>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Synthetics>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Weed>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/GBL>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/GHB>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/Ketamine>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/MXE>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/Other>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/PCP>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy/MDA>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy/MDMA>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy/Other>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy/Pills>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Electronics>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Buprenorphine>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Codeine>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Dihydrocodeine>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Fentanyl>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Heroin>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Hydrocodone>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Morphine>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Opium>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Other>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Oxycodone>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Other>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Prescription>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/2C>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/5-MeO>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/DMT>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/LSD>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Mescaline>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Mushrooms>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/NB>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Other>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Others>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Salvia>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/Spores>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/RCs>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Steroids>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Cocaine>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Mephedrone>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Meth>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Prescription>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Speed>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Weight_loss>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Forgeries>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Forgeries/Other>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Forgeries> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Forgeries/Physical_documents>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Forgeries> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Forgeries/Scans>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Forgeries> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Forgeries/Scans/Photos>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Forgeries/Scans> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info/eBooks>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Aliens>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Aliens/UFOs>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Aliens> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Anonymity>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Doomsday>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Drugs>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Economy>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/IT>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Making_money>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Other>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Philosophy>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Politics>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Psychology>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Relationships>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Relationships/Sex>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Relationships> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Science>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Information>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Information/Guides>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Information> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Information/eBooks>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Information> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Item>
+  a owl:Class ;
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://autorisatiemodel.politie.nl/#persoonlijk> ;
+            sp:predicate <http://autorisatiemodel.politie.nl/#doel> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://autorisatiemodel.politie.nl/#geen> ;
+            sp:predicate <http://autorisatiemodel.politie.nl/#status> ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object <https://www.tno.nl/security/ontology/darkweb/Item> ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasDescription> ;
+      owl:someValuesFrom xsd:string ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasDestination> ;
+      owl:someValuesFrom <https://www.tno.nl/security/ontology/darkweb/Country> ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasOrigin> ;
+      owl:someValuesFrom <https://www.tno.nl/security/ontology/darkweb/Country> ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasPrice> ;
+      owl:someValuesFrom xsd:string ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasRating> ;
+      owl:someValuesFrom xsd:string ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasTitle> ;
+      owl:someValuesFrom xsd:string ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasTopic> ;
+      owl:someValuesFrom <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasVendor> ;
+      owl:someValuesFrom <https://www.tno.nl/security/ontology/darkweb/Vendor> ;
+    ] ;
+  owl:equivalentClass <http://autorisatiemodel.politie.nl/#Gegeven> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Jewelry>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Other>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Services>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Services/Advertising>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Services> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Services/Hacking>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Services> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Services/Money>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Services> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Services/Other>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Services> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Services/Travel>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Services> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Tobacco>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Tobacco/Paraphernalia>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Tobacco> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Tobacco/Smoked>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Tobacco> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Topic>
+  a owl:Class ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Vendor>
+  a owl:Class ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Weapons>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Weapons/Ammunition>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Weapons> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Weapons/Fireworks>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Weapons> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Weapons/Lethal_firearms>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Weapons> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Weapons/Melee>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Weapons> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/Weapons/Non-lethal_firearms>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Weapons> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/hasDescription>
+  a owl:DatatypeProperty ;
+  rdfs:subPropertyOf owl:topDataProperty ;
+.
+<https://www.tno.nl/security/ontology/darkweb/hasDestination>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://www.tno.nl/security/ontology/darkweb/Item> ;
+  rdfs:range <https://www.tno.nl/security/ontology/darkweb/Country> ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+.
+<https://www.tno.nl/security/ontology/darkweb/hasOrigin>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://www.tno.nl/security/ontology/darkweb/Item> ;
+  rdfs:range <https://www.tno.nl/security/ontology/darkweb/Country> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/hasPrice>
+  a owl:DatatypeProperty ;
+.
+<https://www.tno.nl/security/ontology/darkweb/hasRating>
+  a owl:DatatypeProperty ;
+  rdfs:subPropertyOf owl:topDataProperty ;
+.
+<https://www.tno.nl/security/ontology/darkweb/hasRemark>
+  a owl:DatatypeProperty ;
+  rdfs:subPropertyOf owl:topDataProperty ;
+.
+<https://www.tno.nl/security/ontology/darkweb/hasTitle>
+  a owl:DatatypeProperty ;
+.
+<https://www.tno.nl/security/ontology/darkweb/hasTopic>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://www.tno.nl/security/ontology/darkweb/Item> ;
+  rdfs:range <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/hasVendor>
+  a owl:ObjectProperty ;
+  rdfs:domain <https://www.tno.nl/security/ontology/darkweb/Item> ;
+  rdfs:range <https://www.tno.nl/security/ontology/darkweb/Vendor> ;
+.
+<https://www.tno.nl/security/ontology/darkweb/trim>
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Shake> ;
+.

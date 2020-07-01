@@ -1,4 +1,5 @@
 # baseURI: https://www.tno.nl/security/ontology/darkweb
+# imports: http://autorisatiemodel.politie.nl/
 # imports: http://spinrdf.org/spin
 # imports: http://www.w3.org/ns/shacl#
 # prefix: ontotita
@@ -51,72 +52,238 @@ owl:Thing
 .
 <https://www.tno.nl/security/ontology/darkweb>
   a owl:Ontology ;
+  owl:imports <http://autorisatiemodel.politie.nl/> ;
   owl:imports <http://spinrdf.org/spin> ;
   owl:imports sh: ;
   sh:entailment sh:Rules ;
 .
-<https://www.tno.nl/security/ontology/darkweb/Chemicals>
+ontotita:Chemicals
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+  rdfs:subClassOf ontotita:Topic ;
 .
-<https://www.tno.nl/security/ontology/darkweb/Counterfeits>
+ontotita:Counterfeits
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+  rdfs:subClassOf ontotita:Topic ;
+.
+ontotita:Country
+  a owl:Class ;
+.
+ontotita:Data
+  a owl:Class ;
+  rdfs:subClassOf ontotita:Topic ;
+.
+ontotita:Drug_paraphernalia
+  a owl:Class ;
+  rdfs:subClassOf ontotita:Topic ;
+.
+ontotita:Drugs
+  a owl:Class ;
+  rdfs:subClassOf ontotita:Topic ;
+.
+ontotita:Forgeries
+  a owl:Class ;
+  rdfs:subClassOf ontotita:Topic ;
+.
+ontotita:Info
+  a owl:Class ;
+  rdfs:subClassOf ontotita:Topic ;
+.
+ontotita:Information
+  a owl:Class ;
+  rdfs:subClassOf ontotita:Topic ;
+.
+ontotita:Item
+  a owl:Class ;
+  a sh:NodeShape ;
+  spin:rule [
+      a sp:Construct ;
+      sp:templates (
+          [
+            sp:object <http://autorisatiemodel.politie.nl/#persoonlijk> ;
+            sp:predicate <http://autorisatiemodel.politie.nl/#doel> ;
+            sp:subject spin:_this ;
+          ]
+          [
+            sp:object <http://autorisatiemodel.politie.nl/#geen> ;
+            sp:predicate <http://autorisatiemodel.politie.nl/#status> ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+      sp:where (
+          [
+            sp:object ontotita:Item ;
+            sp:predicate rdf:type ;
+            sp:subject spin:_this ;
+          ]
+        ) ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty ontotita:hasDescription ;
+      owl:someValuesFrom xsd:string ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty ontotita:hasDestination ;
+      owl:someValuesFrom ontotita:Country ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty ontotita:hasOrigin ;
+      owl:someValuesFrom ontotita:Country ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty ontotita:hasPrice ;
+      owl:someValuesFrom xsd:string ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty ontotita:hasRating ;
+      owl:someValuesFrom xsd:string ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty ontotita:hasTitle ;
+      owl:someValuesFrom xsd:string ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty ontotita:hasTopic ;
+      owl:someValuesFrom ontotita:Topic ;
+    ] ;
+  rdfs:subClassOf [
+      a owl:Restriction ;
+      owl:onProperty ontotita:hasVendor ;
+      owl:someValuesFrom ontotita:Vendor ;
+    ] ;
+  owl:equivalentClass <http://autorisatiemodel.politie.nl/#Gegeven> ;
+  sh:property [
+      a sh:PropertyShape ;
+      sh:path rdfs:label ;
+      rdfs:label "item label" ;
+      sh:values [
+          sh:path ontotita:hasTitle ;
+        ] ;
+    ] ;
+.
+ontotita:Jewelry
+  a owl:Class ;
+  rdfs:subClassOf ontotita:Topic ;
+.
+ontotita:Other
+  a owl:Class ;
+  rdfs:subClassOf ontotita:Topic ;
+.
+ontotita:Services
+  a owl:Class ;
+  rdfs:subClassOf ontotita:Topic ;
+.
+ontotita:Tobacco
+  a owl:Class ;
+  rdfs:subClassOf ontotita:Topic ;
+.
+ontotita:Topic
+  a owl:Class ;
+.
+ontotita:Vendor
+  a owl:Class ;
+.
+ontotita:Weapons
+  a owl:Class ;
+  rdfs:subClassOf ontotita:Topic ;
+.
+ontotita:hasDescription
+  a owl:DatatypeProperty ;
+  rdfs:domain ontotita:Item ;
+  rdfs:subPropertyOf owl:topDataProperty ;
+.
+ontotita:hasDestination
+  a owl:ObjectProperty ;
+  rdfs:domain ontotita:Item ;
+  rdfs:range ontotita:Country ;
+  rdfs:subPropertyOf owl:topObjectProperty ;
+.
+ontotita:hasOrigin
+  a owl:ObjectProperty ;
+  rdfs:domain ontotita:Item ;
+  rdfs:range ontotita:Country ;
+.
+ontotita:hasPrice
+  a owl:DatatypeProperty ;
+  rdfs:domain ontotita:Item ;
+.
+ontotita:hasRating
+  a owl:DatatypeProperty ;
+  rdfs:domain ontotita:Item ;
+  rdfs:subPropertyOf owl:topDataProperty ;
+.
+ontotita:hasRemark
+  a owl:DatatypeProperty ;
+  rdfs:domain ontotita:Item ;
+  rdfs:subPropertyOf owl:topDataProperty ;
+.
+ontotita:hasTitle
+  a owl:DatatypeProperty ;
+  rdfs:domain ontotita:Item ;
+.
+ontotita:hasTopic
+  a owl:ObjectProperty ;
+  rdfs:domain ontotita:Item ;
+  rdfs:range ontotita:Topic ;
+.
+ontotita:hasVendor
+  a owl:ObjectProperty ;
+  rdfs:domain ontotita:Item ;
+  rdfs:range ontotita:Vendor ;
+.
+ontotita:trim
+  a owl:Class ;
+  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Shake> ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Counterfeits/Accessories>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Counterfeits> ;
+  rdfs:subClassOf ontotita:Counterfeits ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Counterfeits/Clothing>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Counterfeits> ;
+  rdfs:subClassOf ontotita:Counterfeits ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Counterfeits/Counterfeits_Electronics>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Counterfeits> ;
+  rdfs:subClassOf ontotita:Counterfeits ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Counterfeits/Money>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Counterfeits> ;
+  rdfs:subClassOf ontotita:Counterfeits ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Counterfeits/Watches>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Counterfeits> ;
-.
-<https://www.tno.nl/security/ontology/darkweb/Country>
-  a owl:Class ;
-.
-<https://www.tno.nl/security/ontology/darkweb/Data>
-  a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+  rdfs:subClassOf ontotita:Counterfeits ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Data/Accounts>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Data> ;
+  rdfs:subClassOf ontotita:Data ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Data/Pirated>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Data> ;
+  rdfs:subClassOf ontotita:Data ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Data/Software>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Data> ;
-.
-<https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia>
-  a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+  rdfs:subClassOf ontotita:Data ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Containers>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> ;
+  rdfs:subClassOf ontotita:Drug_paraphernalia ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Grinders>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> ;
+  rdfs:subClassOf ontotita:Drug_paraphernalia ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> ;
+  rdfs:subClassOf ontotita:Drug_paraphernalia ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Injecting_equipment/Filters>
   a owl:Class ;
@@ -136,35 +303,31 @@ owl:Thing
 .
 <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Paper>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> ;
+  rdfs:subClassOf ontotita:Drug_paraphernalia ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Pipes>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> ;
+  rdfs:subClassOf ontotita:Drug_paraphernalia ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Scales>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> ;
+  rdfs:subClassOf ontotita:Drug_paraphernalia ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia/Stashes>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drug_paraphernalia> ;
-.
-<https://www.tno.nl/security/ontology/darkweb/Drugs>
-  a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+  rdfs:subClassOf ontotita:Drug_paraphernalia ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Barbiturates>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+  rdfs:subClassOf ontotita:Drugs ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Benzos>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+  rdfs:subClassOf ontotita:Drugs ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+  rdfs:subClassOf ontotita:Drugs ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Concentrates>
   a owl:Class ;
@@ -196,7 +359,7 @@ owl:Thing
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+  rdfs:subClassOf ontotita:Drugs ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Dissociatives/GBL>
   a owl:Class ;
@@ -224,7 +387,7 @@ owl:Thing
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+  rdfs:subClassOf ontotita:Drugs ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Ecstasy/MDA>
   a owl:Class ;
@@ -244,11 +407,11 @@ owl:Thing
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Electronics>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+  rdfs:subClassOf ontotita:Topic ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+  rdfs:subClassOf ontotita:Drugs ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Opioids/Buprenorphine>
   a owl:Class ;
@@ -292,15 +455,15 @@ owl:Thing
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Other>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+  rdfs:subClassOf ontotita:Drugs ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Prescription>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+  rdfs:subClassOf ontotita:Drugs ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+  rdfs:subClassOf ontotita:Drugs ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Psychedelics/2C>
   a owl:Class ;
@@ -348,15 +511,15 @@ owl:Thing
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/RCs>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+  rdfs:subClassOf ontotita:Drugs ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Steroids>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+  rdfs:subClassOf ontotita:Drugs ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs> ;
+  rdfs:subClassOf ontotita:Drugs ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants/Cocaine>
   a owl:Class ;
@@ -382,33 +545,25 @@ owl:Thing
   a owl:Class ;
   rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Stimulants> ;
 .
-<https://www.tno.nl/security/ontology/darkweb/Forgeries>
-  a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
-.
 <https://www.tno.nl/security/ontology/darkweb/Forgeries/Other>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Forgeries> ;
+  rdfs:subClassOf ontotita:Forgeries ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Forgeries/Physical_documents>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Forgeries> ;
+  rdfs:subClassOf ontotita:Forgeries ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Forgeries/Scans>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Forgeries> ;
+  rdfs:subClassOf ontotita:Forgeries ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Forgeries/Scans/Photos>
   a owl:Class ;
   rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Forgeries/Scans> ;
 .
-<https://www.tno.nl/security/ontology/darkweb/Info>
-  a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
-.
 <https://www.tno.nl/security/ontology/darkweb/Info/eBooks>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info> ;
+  rdfs:subClassOf ontotita:Info ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Info/eBooks/Aliens>
   a owl:Class ;
@@ -470,207 +625,59 @@ owl:Thing
   a owl:Class ;
   rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Info/eBooks> ;
 .
-<https://www.tno.nl/security/ontology/darkweb/Information>
-  a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
-.
 <https://www.tno.nl/security/ontology/darkweb/Information/Guides>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Information> ;
+  rdfs:subClassOf ontotita:Information ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Information/eBooks>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Information> ;
-.
-<https://www.tno.nl/security/ontology/darkweb/Item>
-  a owl:Class ;
-  a sh:NodeShape ;
-  spin:rule [
-      a sp:Construct ;
-      sp:templates (
-          [
-            sp:object <http://autorisatiemodel.politie.nl/#persoonlijk> ;
-            sp:predicate <http://autorisatiemodel.politie.nl/#doel> ;
-            sp:subject spin:_this ;
-          ]
-          [
-            sp:object <http://autorisatiemodel.politie.nl/#geen> ;
-            sp:predicate <http://autorisatiemodel.politie.nl/#status> ;
-            sp:subject spin:_this ;
-          ]
-        ) ;
-      sp:where (
-          [
-            sp:object <https://www.tno.nl/security/ontology/darkweb/Item> ;
-            sp:predicate rdf:type ;
-            sp:subject spin:_this ;
-          ]
-        ) ;
-    ] ;
-  rdfs:subClassOf [
-      a owl:Restriction ;
-      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasDescription> ;
-      owl:someValuesFrom xsd:string ;
-    ] ;
-  rdfs:subClassOf [
-      a owl:Restriction ;
-      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasDestination> ;
-      owl:someValuesFrom <https://www.tno.nl/security/ontology/darkweb/Country> ;
-    ] ;
-  rdfs:subClassOf [
-      a owl:Restriction ;
-      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasOrigin> ;
-      owl:someValuesFrom <https://www.tno.nl/security/ontology/darkweb/Country> ;
-    ] ;
-  rdfs:subClassOf [
-      a owl:Restriction ;
-      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasPrice> ;
-      owl:someValuesFrom xsd:string ;
-    ] ;
-  rdfs:subClassOf [
-      a owl:Restriction ;
-      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasRating> ;
-      owl:someValuesFrom xsd:string ;
-    ] ;
-  rdfs:subClassOf [
-      a owl:Restriction ;
-      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasTitle> ;
-      owl:someValuesFrom xsd:string ;
-    ] ;
-  rdfs:subClassOf [
-      a owl:Restriction ;
-      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasTopic> ;
-      owl:someValuesFrom <https://www.tno.nl/security/ontology/darkweb/Topic> ;
-    ] ;
-  rdfs:subClassOf [
-      a owl:Restriction ;
-      owl:onProperty <https://www.tno.nl/security/ontology/darkweb/hasVendor> ;
-      owl:someValuesFrom <https://www.tno.nl/security/ontology/darkweb/Vendor> ;
-    ] ;
-  owl:equivalentClass <http://autorisatiemodel.politie.nl/#Gegeven> ;
-  sh:property [
-      a sh:PropertyShape ;
-      sh:path rdfs:label ;
-      rdfs:label "item label" ;
-      sh:values [
-          sh:path <https://www.tno.nl/security/ontology/darkweb/hasTitle> ;
-        ] ;
-    ] ;
-.
-<https://www.tno.nl/security/ontology/darkweb/Jewelry>
-  a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
-.
-<https://www.tno.nl/security/ontology/darkweb/Other>
-  a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
-.
-<https://www.tno.nl/security/ontology/darkweb/Services>
-  a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+  rdfs:subClassOf ontotita:Information ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Services/Advertising>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Services> ;
+  rdfs:subClassOf ontotita:Services ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Services/Hacking>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Services> ;
+  rdfs:subClassOf ontotita:Services ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Services/Money>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Services> ;
+  rdfs:subClassOf ontotita:Services ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Services/Other>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Services> ;
+  rdfs:subClassOf ontotita:Services ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Services/Travel>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Services> ;
-.
-<https://www.tno.nl/security/ontology/darkweb/Tobacco>
-  a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+  rdfs:subClassOf ontotita:Services ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Tobacco/Paraphernalia>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Tobacco> ;
+  rdfs:subClassOf ontotita:Tobacco ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Tobacco/Smoked>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Tobacco> ;
-.
-<https://www.tno.nl/security/ontology/darkweb/Topic>
-  a owl:Class ;
-.
-<https://www.tno.nl/security/ontology/darkweb/Vendor>
-  a owl:Class ;
-.
-<https://www.tno.nl/security/ontology/darkweb/Weapons>
-  a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Topic> ;
+  rdfs:subClassOf ontotita:Tobacco ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Weapons/Ammunition>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Weapons> ;
+  rdfs:subClassOf ontotita:Weapons ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Weapons/Fireworks>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Weapons> ;
+  rdfs:subClassOf ontotita:Weapons ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Weapons/Lethal_firearms>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Weapons> ;
+  rdfs:subClassOf ontotita:Weapons ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Weapons/Melee>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Weapons> ;
+  rdfs:subClassOf ontotita:Weapons ;
 .
 <https://www.tno.nl/security/ontology/darkweb/Weapons/Non-lethal_firearms>
   a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Weapons> ;
-.
-<https://www.tno.nl/security/ontology/darkweb/hasDescription>
-  a owl:DatatypeProperty ;
-  rdfs:subPropertyOf owl:topDataProperty ;
-.
-<https://www.tno.nl/security/ontology/darkweb/hasDestination>
-  a owl:ObjectProperty ;
-  rdfs:domain <https://www.tno.nl/security/ontology/darkweb/Item> ;
-  rdfs:range <https://www.tno.nl/security/ontology/darkweb/Country> ;
-  rdfs:subPropertyOf owl:topObjectProperty ;
-.
-<https://www.tno.nl/security/ontology/darkweb/hasOrigin>
-  a owl:ObjectProperty ;
-  rdfs:domain <https://www.tno.nl/security/ontology/darkweb/Item> ;
-  rdfs:range <https://www.tno.nl/security/ontology/darkweb/Country> ;
-.
-<https://www.tno.nl/security/ontology/darkweb/hasPrice>
-  a owl:DatatypeProperty ;
-.
-<https://www.tno.nl/security/ontology/darkweb/hasRating>
-  a owl:DatatypeProperty ;
-  rdfs:subPropertyOf owl:topDataProperty ;
-.
-<https://www.tno.nl/security/ontology/darkweb/hasRemark>
-  a owl:DatatypeProperty ;
-  rdfs:subPropertyOf owl:topDataProperty ;
-.
-<https://www.tno.nl/security/ontology/darkweb/hasTitle>
-  a owl:DatatypeProperty ;
-.
-<https://www.tno.nl/security/ontology/darkweb/hasTopic>
-  a owl:ObjectProperty ;
-  rdfs:domain <https://www.tno.nl/security/ontology/darkweb/Item> ;
-  rdfs:range <https://www.tno.nl/security/ontology/darkweb/Topic> ;
-.
-<https://www.tno.nl/security/ontology/darkweb/hasVendor>
-  a owl:ObjectProperty ;
-  rdfs:domain <https://www.tno.nl/security/ontology/darkweb/Item> ;
-  rdfs:range <https://www.tno.nl/security/ontology/darkweb/Vendor> ;
-.
-<https://www.tno.nl/security/ontology/darkweb/trim>
-  a owl:Class ;
-  rdfs:subClassOf <https://www.tno.nl/security/ontology/darkweb/Drugs/Cannabis/Shake> ;
+  rdfs:subClassOf ontotita:Weapons ;
 .
